@@ -3,182 +3,495 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Prasad | Tech Lead</title>
     <link rel="icon" type="image/png" href="img/vplogo.png" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/teststyle.css">
-    <title>vishalprasad.co.in</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        /* ================= GLOBAL ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #ffffff;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* Scroll Progress */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #2563eb;
+            width: 0%;
+            z-index: 2000;
+        }
+
+        /* ================= GLASS NAVBAR ================= */
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+        }
+
+        header h2 a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 4px 0;
+            transition: .3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        @media(max-width:768px) {
+            nav {
+                position: absolute;
+                top: 70px;
+                right: -250px;
+                background: rgba(15, 23, 42, 0.95);
+                flex-direction: column;
+                width: 200px;
+                padding: 20px;
+                transition: .3s;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 8% 60px;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #e2e8f0;
+        }
+
+        .hero img {
+            width: 340px;
+            border-radius: 12px;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 50px;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: .8s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .skill-box {
+            flex: 1 1 250px;
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-6px);
+        }
+
+        .skill-box i {
+            font-size: 26px;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        /* ================= EXPERIENCE ================= */
+
+        .exp-card {
+            background: #f8fafc;
+            padding: 35px;
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .exp-role {
+            font-size: 14px;
+            color: #475569;
+            margin-top: 4px;
+        }
+
+        .exp-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 18px 0;
+        }
+
+        .exp-summary {
+            color: #475569;
+            margin-bottom: 10px;
+        }
+
+        .exp-toggle {
+            color: #2563eb;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .exp-toggle i {
+            margin-left: 6px;
+            transition: .3s;
+        }
+
+        .exp-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: .4s;
+        }
+
+        .exp-details ul {
+            padding-left: 18px;
+            margin-top: 10px;
+        }
+
+        .exp-details li {
+            margin-bottom: 8px;
+            color: #475569;
+        }
+
+        .exp-card.active .exp-details {
+            max-height: 500px;
+        }
+
+        .exp-card.active .exp-toggle i {
+            transform: rotate(180deg);
+        }
+
+        /* ================= RESUME ================= */
+
+        #pdf-preview {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            display: block;
+        }
+
+        /* ================= CONTACT ================= */
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 14px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .footer-icons i {
+            margin: 0 10px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .footer-icons i:hover {
+            color: #60a5fa;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 
 <body>
+
+    <div id="progress"></div>
+
     <header>
-        <nav class="nav-navigation">
-            <div class="nav-logo">
-                <span class="nav-logo-text">
-                    <span class="symbol">&lt;</span> vishalprasad.co.in <span class="symbol">/&gt;</span>
-                </span>
-            </div>
-            <div class="nav-menu">
-                <ul>
-                    <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
-                    <li><a href="#aboutme"><i class="fas fa-user"></i> About Me</a></li>
-                    <li><a href="vishalprasad.pdf"><i class="fas fa-pen-alt"></i> Resume </a></li>
-                    <li><a href="#contactme"><i class="fas fa-handshake"></i> Contact Me</a></li>
-                </ul>
-            </div>
-            <div class="nav-toggle">
-                <a href="javascript:void(0);" onclick="toggleMenu()">
-                    <i class="fa fa-bars icon"></i>
-                </a>
-            </div>
-            <div class="nav-overlay">
-                <ul>
-                    <li><a href="#home" onclick="toggleMenu();"><i class="fas fa-home"></i>Home</a></li>
-                    <li><a href="#aboutme" onclick="toggleMenu();"><i class="fas fa-user"></i> About Me</a></li>
-                    <li><a href="blog.html" onclick="toggleMenu();"><i class="fas fa-pen-alt"></i> Resume </a></li>
-                    <li><a href="#contactme" onclick="toggleMenu();"><i class="fas fa-handshake"></i> Contact
-                            Me</a></li>
-                </ul>
+        <h2><a href="https://vishalprasad.co.in" target="_blank">Vishal Prasad</a></h2>
 
-            </div>
+        <nav id="nav-menu">
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
         </nav>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
     </header>
-    <main>
-        <div id="home" class="home">
-            <div class="my-pic">
-                <img src="img/vp.jpg" alt="vishal's iamge" />
-                <div class="social-icons">
-                    <div><i class="fab fa-youtube utube"></i> </div>
-                    <div><i class="fab fa-twitter twitter"></i> </div>
-                    <div><i class="fab fa-linkedin-in linkedln"></i> </div>
-                    <div><i class="fab fa-git git"></i></i> </div>
-                </div>
-            </div>
 
-            <div class="landing-page-text">
-                <div class="profile-line">
-                    <span class="symbol yellow">{</span>
-                    <ul>
-                        <li><span class="symbol">&lt;</span> FULL STACK DEVELOPER <span class="symbol">/&gt;</span></li>
-                        <li><span class="symbol">&lt;</span> LEARNING INSTRUCTOR <span class="symbol">/&gt;</span></li>
-                        <li><span class="symbol">&lt;</span> TECHNICAL BLOGGER <span class="symbol">/&gt;</span></li>
-                        <li><span class="symbol">&lt;</span> LEARNING ENTHUSIAST <span class="symbol">/&gt;</span></li>
-                    </ul>
-                    <span class="symbol">}</span></li>
-                </div>
-                <div class="know-more">
-                    <a href="#"> /** click here to know more... */</a>
-                </div>
-            </div>
+    <!-- HERO -->
+    <section class="hero reveal">
+        <div class="hero-text">
+            <h1>Technical Lead</h1>
+            <h3 id="typing"></h3>
+            <p>Designing scalable distributed systems across startups and global enterprises.</p>
         </div>
-        <div id="aboutme" class="aboutme">
-            <section class="aboutme-section">
-                <i class="fas fa-user"></i> About Me
-            </section>
-            <div class="aboutme-data">
-                <div class="aboutme-text">
-                    <img src="img/vp.jpg">
-                    <p>Hello! My name is Vishal Prasad, I hold a bachelor's degree in Computer Science and Engineering.
-                        Currently, I am a Full Stack Developer with 8+ years of software development experience. I love
-                        technology, writing as well as design, analyzing, re-factor software and have a passion to
-                        continuously learn and update myself on both Technical and Human Skills.
-                    </p>
-                    <p>
-                        Fast-forward to today, and I've had the privilege of working at a startup to huge software
-                        companies. My main focus these days is building end-to-end software from design to deployment
-                        and keeping myself updated with the latest technologies.
-                    </p>
-                </div>
-                <div class="aboutme-skills">
-                    <div class="aboutme-skills-title">
-                        Skills
-                    </div>
-                    <div class="aboutme-skills-list">
-                        <div>
-                            HTML 5
-                        </div>
-                        <div>
-                            CSS 3
-                        </div>
-                        <div>
-                            JS(ES 6)
-                        </div>
-                        <div>
-                            React
-                        </div>
-                        <div>
-                            Java
-                        </div>
-                        <div>
-                            Spring Boot
-                        </div>
-                        <div>
-                            Maven
-                        </div>
-                        <div>
-                            SQL
-                        </div>
-                        <div>
-                            DS/Algo
-                        </div>
-                        <div>
-                            Design Patterns
-                        </div>
-                        <div>
-                            jUnit
-                        </div>
-                        <div>
-                            CI/CD
-                        </div>
-                        <div>
-                            AWS
-                        </div>
-                        <div>
-                            Agile
-                        </div>
-                    </div>
-                </div>
+        <img src="img/profile.png" alt="Vishal Prasad">
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+        <h2 class="section-title">Core Expertise & Skills</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <i class="fas fa-network-wired"></i>
+                <h4>Architecture</h4>
+                <p>Distributed Systems • Microservices • Event-Driven</p>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-code"></i>
+                <h4>Backend</h4>
+                <p>Java • Spring Boot • Kafka</p>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-cloud"></i>
+                <h4>Cloud & DevOps</h4>
+                <p>AWS • Azure • Kubernetes</p>
             </div>
         </div>
-        </div>
+    </section>
 
-        <!--######## Contact Me Section Stats Here ###########-->
-        <div id="contactme" class="contactme">
-            <section class="contactme-section">
-                <i class="fas fa-user"></i> Contact Me
-            </section>
-            <div id="contactme-form-div" class="contactme-form-div">
-                <!-- <form id="contactme-form" class="contactme-form" onsubmit="return false;">
-                    <label for="uname">Name</label>
-                    <input type="text" id="uname" name="uname" placeholder="Your Name.." required>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+        <h2 class="section-title">Experience</h2>
 
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="Your Email.." required>
-
-                    <label for="msg">Message</label>
-                    <textarea name="msg" id="msg" class="msg" placeholder="Your Message Here.." required></textarea>
-                    <input type="submit" value="Submit">
-                </form> -->
-                <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLScNVkpif6GscJgMUjfPVc-U2kJdTDfpQ4Snw2_gUDBG53g1sg/viewform?embedded=true"
-                    width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">
-                    Loading…
-                </iframe>
+        <div class="exp-card">
+            <h3>WESCO</h3>
+            <p class="exp-role">Associate Principal Engineer | 2022 – Present</p>
+            <div class="exp-divider"></div>
+            <p class="exp-summary">
+                Driving enterprise-scale modernization and distributed architecture transformation.
+            </p>
+            <div class="exp-toggle" onclick="toggleExp(this)">
+                View Detailed Impact <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="exp-details">
+                <ul>
+                    <li><strong>40% Cost Reduction:</strong> Transitioned vendor-managed system in-house.</li>
+                    <li><strong>Cloud-Native Architecture:</strong> Designed event-driven microservices.</li>
+                    <li><strong>Engineering Leadership:</strong> Built and mentored backend teams.</li>
+                    <li><strong>Delivery Velocity:</strong> Improved sprint throughput by 15%.</li>
+                </ul>
             </div>
         </div>
 
-    </main>
+        <div class="exp-card">
+            <h3>JP Morgan Chase</h3>
+            <p class="exp-role">Software Associate | 2018 – 2022</p>
+            <div class="exp-divider"></div>
+            <p class="exp-summary">
+                Modernized trading systems in regulated fintech environment.
+            </p>
+            <div class="exp-toggle" onclick="toggleExp(this)">
+                View Detailed Impact <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="exp-details">
+                <ul>
+                    <li><strong>50% Performance Improvement:</strong> Optimized reporting systems.</li>
+                    <li><strong>100% Audit Compliance:</strong> Resolved critical security findings.</li>
+                    <li><strong>Legacy Modernization:</strong> Migrated monolith to microservices.</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="reveal">
+        <h2 class="section-title">Resume</h2>
+        <div style="text-align:center;">
+            <a href="vishalprasad.pdf" target="_blank">Open Resume</a> |
+            <a href="vishalprasad.pdf" download>Download Resume</a>
+        </div>
+        <canvas id="pdf-preview"></canvas>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+        <h2 class="section-title">Contact</h2>
+        <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScNVkpif6GscJgMUjfPVc-U2kJdTDfpQ4Snw2_gUDBG53g1sg/viewform?embedded=true"></iframe>
+    </section>
+
     <footer>
-        <div class="footer-data">
-            &copy vishalprasad.co.in 2026 onwards
+        <div class="footer-icons">
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github"></i>
+            <i class="fas fa-envelope"></i>
         </div>
+        <p>© 2026 Vishal Prasad. All rights reserved.</p>
     </footer>
 
-    <script src="js/myscript.js"></script>
-</body>
+    <script>
 
+        /* Typing */
+        const text = "Architecting scalable distributed systems";
+        let i = 0;
+        function typing() {
+            if (i < text.length) {
+                document.getElementById("typing").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, 50);
+            }
+        }
+        typing();
+
+        /* Hamburger */
+        function toggleMenu() {
+            document.getElementById("nav-menu").classList.toggle("active");
+            document.getElementById("hamburger").classList.toggle("active");
+        }
+
+        /* Expand Experience */
+        function toggleExp(el) {
+            el.closest(".exp-card").classList.toggle("active");
+        }
+
+        /* Reveal Animation */
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, { threshold: 0.15 });
+        reveals.forEach(r => observer.observe(r));
+
+        /* Scroll Progress */
+        window.addEventListener("scroll", () => {
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById("progress").style.width = scrolled + "%";
+        });
+
+        /* PDF Preview */
+        pdfjsLib.getDocument("vishalprasad.pdf").promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+                const canvas = document.getElementById("pdf-preview");
+                const ctx = canvas.getContext("2d");
+                const viewport = page.getViewport({ scale: 1 });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                page.render({ canvasContext: ctx, viewport: viewport });
+            });
+        });
+
+    </script>
+
+</body>
 
 </html>
