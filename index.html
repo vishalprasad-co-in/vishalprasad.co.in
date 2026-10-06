@@ -1,17 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#24180f">
-    <meta name="description" content="Vishal Prasad — Principal Engineer, engineering leader and technology builder.">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#24180f" name="theme-color" />
+    <meta content="Vishal Prasad — Principal Engineer, engineering leader and technology builder." name="description" />
     <title>Vishal Prasad | Principal Engineer</title>
-    <link rel="icon" type="image/png" href="img/vplogo.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="img/vplogo.png" rel="icon" type="image/png" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Patrick+Hand&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
     <style>
         :root {
             --wood: #2a1b11;
@@ -137,83 +139,183 @@
             overflow: visible
         }
 
-        .coffee {
-            top: 15px;
-            right: 32px;
-            width: 108px;
-            height: 92px;
+        .analog-watch {
+            position: absolute;
+            left: 28px;
+            top: 205px;
+            width: 118px;
+            height: 118px;
             border-radius: 50%;
-            background: radial-gradient(ellipse at 45% 40%, #20150e 0 43%, #f9f5ed 45% 58%, #c7beb0 61% 67%, transparent 69%);
-            filter: drop-shadow(0 13px 9px #0009);
-            animation: decorFloat 8s ease-in-out infinite reverse
+            background: radial-gradient(circle at 35% 30%, #fffdf4 0 42%, #e9dfca 74%, #c9b99c 100%);
+            border: 7px solid #6b5744;
+            box-shadow: 0 12px 18px #0008, inset 0 0 0 2px #f9f0df, inset 0 0 16px #0002;
+            transform: rotate(-7deg);
         }
 
-        .coffee:before {
-            content: "";
+        .watch-mark {
             position: absolute;
-            width: 37px;
-            height: 34px;
-            border: 10px solid #e8e1d6;
-            border-left: 0;
-            border-radius: 0 22px 22px 0;
-            right: -22px;
-            top: 33px;
-            z-index: -1
+            display: block;
+            width: 3px;
+            height: 10px;
+            background: #30271f;
+            left: 50%;
+            top: 6px;
+            transform-origin: 50% 53px;
+            border-radius: 2px;
         }
 
-        .coffee-liquid {
+        .watch-mark.m3 {
+            transform: translateX(-50%) rotate(90deg);
+        }
+
+        .watch-mark.m6 {
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        .watch-mark.m9 {
+            transform: translateX(-50%) rotate(270deg);
+        }
+
+        .watch-hand {
             position: absolute;
-            left: 24%;
-            top: 20%;
-            width: 48%;
-            height: 40%;
+            left: 50%;
+            bottom: 50%;
+            width: 3px;
+            border-radius: 4px;
+            transform-origin: 50% 100%;
+            transform: translateX(-50%) rotate(0deg);
+            background: #30271f;
+        }
+
+        .watch-hand.hour {
+            height: 30px;
+            width: 5px;
+        }
+
+        .watch-hand.minute {
+            height: 39px;
+            width: 3px;
+        }
+
+        .watch-hand.second {
+            height: 43px;
+            width: 1.5px;
+            background: #9d3c2f;
+        }
+
+        .watch-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: radial-gradient(ellipse at 35% 30%, #493021, #130e0a 70%);
-            box-shadow: inset 0 2px 4px #000
-        }
-
-        .sticky-stack {
-            position: absolute;
-            left: 24px;
-            top: 210px;
-            display: grid;
-            gap: 18px
-        }
-
-        .mini-note {
-            width: 106px;
-            background: #e9d9b9;
-            padding: 13px 10px;
-            text-align: center;
-            font: 17px "Patrick Hand", cursive;
-            transform: rotate(-4deg);
-            box-shadow: 2px 7px 10px #0006
-        }
-
-        .mini-note:nth-child(2) {
-            transform: rotate(3deg)
-        }
-
-        .mini-note:nth-child(3) {
-            transform: rotate(-2deg)
+            background: #9d3c2f;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 2px #fff8e9;
         }
 
         .phone {
             position: absolute;
             right: 28px;
             top: 190px;
-            width: 82px;
-            height: 155px;
+            width: 86px;
+            height: 158px;
             border-radius: 18px;
             background: #08090b;
             border: 3px solid #777;
             box-shadow: 0 12px 16px #0008;
             transform: rotate(10deg);
             color: white;
+            padding: 7px 5px;
+        }
+
+        .phone-speaker {
+            width: 25px;
+            height: 3px;
+            border-radius: 3px;
+            background: #3d3d3f;
+            margin: 0 auto 5px;
+        }
+
+        .phone-screen {
+            height: 132px;
+            border-radius: 12px;
+            padding: 8px 6px;
+            background: linear-gradient(155deg, #172033, #071019 70%);
+            text-align: center;
+            overflow: hidden;
+            box-shadow: inset 0 0 16px #0008;
+        }
+
+        .music-label {
+            font: 8px Inter, Arial, sans-serif;
+            letter-spacing: 1.1px;
+            opacity: .7;
+        }
+
+        .music-disc {
+            width: 34px;
+            height: 34px;
+            margin: 7px auto 5px;
+            border-radius: 50%;
             display: grid;
             place-items: center;
-            text-align: center;
-            font: 17px "Patrick Hand", cursive
+            background: radial-gradient(circle, #f5c83c 0 12%, #174b9b 13% 42%, #101923 43% 100%);
+            font: 18px "Patrick Hand", cursive;
+            transition: transform .4s linear;
+        }
+
+        .phone.playing .music-disc {
+            animation: spinDisc 4s linear infinite;
+        }
+
+        .music-title {
+            font: 12px "Patrick Hand", cursive;
+            line-height: 1;
+        }
+
+        .music-subtitle {
+            font: 8px Inter, Arial, sans-serif;
+            opacity: .55;
+            margin-top: 2px;
+        }
+
+        .music-progress {
+            height: 3px;
+            margin: 8px 3px 7px;
+            background: #ffffff22;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .music-progress span {
+            display: block;
+            width: 18%;
+            height: 100%;
+            background: var(--yellow);
+            border-radius: 3px;
+        }
+
+        .phone.playing .music-progress span {
+            animation: musicProgress 12s linear infinite;
+        }
+
+        .music-button {
+            border: 1px solid #ffffff55;
+            background: #ffffff12;
+            color: #fff;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 11px;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .music-button:hover {
+            transform: scale(1.08);
+            background: #ffffff22;
         }
 
         .quote {
@@ -620,13 +722,37 @@
             text-shadow: 0 5px 10px #174b9b33
         }
 
-        .mini-note {
-            transition: transform .25s ease, box-shadow .25s ease
+        @keyframes spinDisc {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
-        .mini-note:hover {
-            transform: translateY(-4px) rotate(0);
-            box-shadow: 0 12px 18px #0007
+        @keyframes musicProgress {
+            from {
+                width: 8%;
+            }
+
+            to {
+                width: 92%;
+            }
+        }
+
+        .typing-copy::after {
+            content: "";
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            margin-left: 3px;
+            vertical-align: -2px;
+            background: var(--blue);
+            animation: typingCursor .8s steps(1) infinite;
+        }
+
+        @keyframes typingCursor {
+            50% {
+                opacity: 0;
+            }
         }
 
         @keyframes pageReveal {
@@ -717,12 +843,6 @@
                 height: 100%
             }
 
-            .coffee {
-                right: 10px;
-                width: 75px;
-                height: 75px
-            }
-
             .phone {
                 right: 8px;
                 top: 160px;
@@ -795,7 +915,6 @@
             }
 
             .plant,
-            .coffee,
             .sticky-stack,
             .phone,
             .glasses,
@@ -1199,7 +1318,7 @@
             font-weight: 400;
             color: var(--ink);
             border-bottom: 2px solid var(--blue);
-            padding: 0 08 px;
+            padding: 0 8px;
         }
 
         .page.left .portrait-wrap {
@@ -1224,8 +1343,1177 @@
                 font-size: clamp(22px, 6vw, 30px);
             }
 
+            .analog-watch {
+                left: 14px;
+                top: 180px;
+                width: 92px;
+                height: 92px;
+            }
+
+            .watch-mark {
+                transform-origin: 50% 40px;
+            }
+
+            .watch-hand.hour {
+                height: 24px;
+            }
+
+            .watch-hand.minute {
+                height: 31px;
+            }
+
+            .watch-hand.second {
+                height: 34px;
+            }
+
+            .phone {
+                right: 12px;
+                top: 170px;
+                transform: rotate(7deg) scale(.88);
+                transform-origin: top right;
+            }
+
             .page.left .portrait {
                 height: min(340px, 42vh);
+            }
+        }
+
+        /* --- Premium desk realism + hand-drawn details --- */
+        .nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            position: relative;
+            border-bottom: 0;
+            color: #fff;
+        }
+
+        .nav-icon {
+            width: 17px;
+            height: 17px;
+            flex: 0 0 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.65;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: .82;
+            transform: translateY(1px);
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        .nav a::after {
+            content: "";
+            position: absolute;
+            left: 23px;
+            right: 0;
+            bottom: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, transparent 0 2%, #77a9ff 7% 92%, transparent 98%);
+            transform: scaleX(0) rotate(-1deg);
+            transform-origin: left center;
+            opacity: .95;
+        }
+
+        .nav a:hover .nav-icon,
+        .nav a.active .nav-icon {
+            opacity: 1;
+            transform: translateY(0) rotate(-2deg);
+        }
+
+        .nav a:hover::after,
+        .nav a.active::after {
+            animation: drawNavUnderline .55s cubic-bezier(.2, .8, .25, 1) forwards;
+        }
+
+        @keyframes drawNavUnderline {
+            from {
+                transform: scaleX(0) rotate(-1deg);
+            }
+
+            to {
+                transform: scaleX(1) rotate(-1deg);
+            }
+        }
+
+        .menu {
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .menu:focus-visible {
+            outline: 2px solid #77a9ff;
+            outline-offset: 3px;
+        }
+
+        /* Realistic ceramic plant */
+        .realistic-plant {
+            width: 138px;
+            height: 138px;
+            top: 8px;
+            left: 8px;
+            filter: drop-shadow(0 15px 10px rgba(0, 0, 0, .42));
+        }
+
+        .realistic-plant svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .realistic-plant img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .realistic-plant {
+            animation: none !important;
+        }
+
+        .realistic-plant::after {
+            content: "";
+            position: absolute;
+            left: 20px;
+            right: 18px;
+            bottom: -2px;
+            height: 16px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, .34), transparent 70%);
+            filter: blur(3px);
+            z-index: -1;
+        }
+
+        /* Realistic coffee cup + saucer */
+        .realistic-coffee {
+            width: 160px;
+            height: 132px;
+            top: 2px;
+            right: 7px;
+            filter: drop-shadow(0 16px 10px rgba(0, 0, 0, .44));
+        }
+
+        .realistic-coffee svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .realistic-coffee img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .realistic-coffee {
+            animation: none !important;
+        }
+
+        .realistic-coffee::after {
+            content: "";
+            position: absolute;
+            left: 35px;
+            right: 34px;
+            bottom: 4px;
+            height: 16px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, .36), transparent 70%);
+            filter: blur(3px);
+            z-index: -1;
+        }
+
+        /* A real-looking wrist watch sitting on the wood */
+        .analog-watch {
+            left: 30px;
+            top: 188px;
+            width: 124px;
+            height: 158px;
+            z-index: 2;
+            transform: rotate(-8deg);
+            filter: drop-shadow(0 15px 9px rgba(0, 0, 0, .42));
+            pointer-events: none;
+        }
+
+        .watch-strap {
+            position: absolute;
+            left: 34px;
+            width: 56px;
+            height: 66px;
+            background: linear-gradient(90deg, #17100c, #493025 30%, #17100c 85%);
+            border: 2px solid #24160f;
+            box-shadow: inset 0 0 9px #0009;
+        }
+
+        .watch-strap-top {
+            top: -30px;
+            border-radius: 18px 18px 8px 8px;
+        }
+
+        .watch-strap-bottom {
+            bottom: -30px;
+            border-radius: 8px 8px 18px 18px;
+        }
+
+        .watch-face {
+            position: absolute;
+            left: 0;
+            top: 17px;
+            width: 124px;
+            height: 124px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 25%, #fffef8 0 32%, #eee5d2 60%, #c9b79b 100%);
+            border: 7px solid #26211c;
+            box-shadow: inset 0 0 0 2px #d4c2a7, inset 0 0 13px rgba(0, 0, 0, .18), 0 0 0 3px #77634d, 0 0 0 5px rgba(20, 13, 8, .55);
+            overflow: visible;
+        }
+
+        .watch-face::before {
+            content: "";
+            position: absolute;
+            inset: 5px;
+            border-radius: 50%;
+            border: 1px solid rgba(85, 66, 43, .35);
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, .08);
+        }
+
+        .watch-face::after {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border-radius: 50%;
+            background: linear-gradient(130deg, rgba(255, 255, 255, .34), transparent 42% 100%);
+            pointer-events: none;
+        }
+
+        .watch-mark {
+            position: absolute;
+            left: 50%;
+            top: 4px;
+            width: 2px;
+            height: 8px;
+            border-radius: 2px;
+            background: #2c261f;
+            transform-origin: 50% 54px;
+            z-index: 2;
+        }
+
+        .watch-mark.m1 {
+            transform: translateX(-50%) rotate(30deg);
+        }
+
+        .watch-mark.m2 {
+            transform: translateX(-50%) rotate(60deg);
+        }
+
+        .watch-mark.m3 {
+            transform: translateX(-50%) rotate(90deg);
+        }
+
+        .watch-mark.m4 {
+            transform: translateX(-50%) rotate(120deg);
+        }
+
+        .watch-mark.m5 {
+            transform: translateX(-50%) rotate(150deg);
+        }
+
+        .watch-mark.m6 {
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        .watch-mark.m7 {
+            transform: translateX(-50%) rotate(210deg);
+        }
+
+        .watch-mark.m8 {
+            transform: translateX(-50%) rotate(240deg);
+        }
+
+        .watch-mark.m9 {
+            transform: translateX(-50%) rotate(270deg);
+        }
+
+        .watch-mark.m10 {
+            transform: translateX(-50%) rotate(300deg);
+        }
+
+        .watch-mark.m11 {
+            transform: translateX(-50%) rotate(330deg);
+        }
+
+        .watch-mark.m12 {
+            transform: translateX(-50%) rotate(0deg);
+            width: 4px;
+            height: 12px;
+        }
+
+        .watch-hand {
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            width: 3px;
+            border-radius: 5px;
+            transform-origin: 50% 100%;
+            transform: translateX(-50%) rotate(0deg);
+            background: #28231e;
+            z-index: 4;
+            box-shadow: 1px 1px 1px #fff5;
+        }
+
+        .watch-hand.hour {
+            height: 31px;
+            width: 5px;
+        }
+
+        .watch-hand.minute {
+            height: 43px;
+            width: 3px;
+        }
+
+        .watch-hand.second {
+            height: 47px;
+            width: 1px;
+            background: #9b332b;
+            box-shadow: none;
+        }
+
+        .watch-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #9b332b;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            box-shadow: 0 0 0 2px #eee5d2;
+        }
+
+        .watch-logo {
+            position: absolute;
+            left: 50%;
+            top: 31px;
+            transform: translateX(-50%);
+            font: 700 9px Inter, Arial, sans-serif;
+            letter-spacing: 1px;
+            color: #6c5740;
+            z-index: 2;
+        }
+
+        .watch-crown {
+            position: absolute;
+            right: -7px;
+            top: 66px;
+            width: 10px;
+            height: 22px;
+            border-radius: 3px;
+            background: linear-gradient(#6f5c48, #2b2119, #6f5c48);
+            box-shadow: 0 2px 2px #0006;
+        }
+
+        /* Hand-drawn underlines and marker highlight */
+        .page h1,
+        .page h2 {
+            position: relative;
+            border-bottom: 0;
+            padding-bottom: 8px;
+        }
+
+        .page h1::after,
+        .page h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 100%;
+            height: 4px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, transparent 0%, #174b9b 5%, #2f66b8 48%, #174b9b 94%, transparent 100%);
+            transform: scaleX(0) rotate(-.8deg);
+            transform-origin: left center;
+            animation: drawUnderline .9s cubic-bezier(.2, .75, .25, 1) .25s forwards;
+            opacity: .9;
+        }
+
+        .page h2::after {
+            height: 3px;
+        }
+
+        @keyframes drawUnderline {
+            from {
+                transform: scaleX(0) rotate(-.8deg)
+            }
+
+            to {
+                transform: scaleX(1) rotate(-.8deg)
+            }
+        }
+
+        .marker-highlight {
+            position: relative;
+            display: inline;
+            z-index: 0;
+            padding: 0 3px;
+        }
+
+        .marker-highlight::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: -5px;
+            right: -6px;
+            bottom: -6px;
+            height: 1.62em;
+            background: linear-gradient(98deg, rgba(245, 200, 60, .1), rgba(245, 200, 60, .72) 18%, rgba(245, 200, 60, .62) 84%, rgba(245, 200, 60, .18));
+            border-radius: 3px 8px 4px 5px;
+            transform: rotate(-1.2deg) scaleX(0);
+            transform-origin: left center;
+            animation: markerDraw 1s cubic-bezier(.18, .78, .25, 1) .55s forwards;
+        }
+
+        @keyframes markerDraw {
+            from {
+                transform: rotate(-1.2deg) scaleX(0)
+            }
+
+            to {
+                transform: rotate(-1.2deg) scaleX(1)
+            }
+        }
+
+        .typing-copy::after {
+            content: "|";
+            display: inline-block;
+            margin-left: 2px;
+            color: var(--blue);
+            animation: typingCursor .75s steps(1) infinite;
+        }
+
+        /* Notebook/diary realism */
+        .notebook {
+            box-shadow: 0 24px 34px rgba(0, 0, 0, .52), 0 5px 8px rgba(0, 0, 0, .28), inset 0 0 0 1px #b5a88f, inset 0 -4px 12px rgba(70, 46, 22, .13);
+        }
+
+        .page.left,
+        .page.right {
+            box-shadow: inset 0 0 24px rgba(67, 47, 27, .08);
+        }
+
+        .page.left::after,
+        .page.right::before {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            opacity: .45;
+        }
+
+        .page.left::after {
+            inset: auto 0 0 0;
+            height: 22px;
+            background: linear-gradient(to top, rgba(48, 31, 16, .12), transparent);
+        }
+
+        .page.right::before {
+            inset: 0 auto 0 0;
+            width: 18px;
+            background: linear-gradient(90deg, rgba(47, 31, 17, .11), transparent);
+        }
+
+        .daily-shadow-fix {
+            filter: drop-shadow(0 16px 12px rgba(0, 0, 0, .36));
+        }
+
+        /* Music phone must remain interactive even though the desk decor is not */
+        .phone {
+            pointer-events: auto;
+            z-index: 6;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .music-button {
+            pointer-events: auto;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .music-button:active {
+            transform: scale(.94);
+        }
+
+        @media(max-width:900px) {
+            .realistic-plant {
+                left: 4px;
+                width: 92px;
+                height: 92px;
+            }
+
+            .realistic-coffee {
+                right: 0;
+                width: 118px;
+                height: 92px;
+            }
+
+            .analog-watch {
+                left: 10px;
+                top: 185px;
+                transform: scale(.82) rotate(-8deg);
+                transform-origin: top left;
+            }
+
+            .phone {
+                right: 4px;
+                top: 155px;
+                width: 70px;
+                height: 132px;
+            }
+        }
+
+        @media(max-width:650px) {
+            .nav a {
+                justify-content: flex-start;
+                gap: 10px;
+            }
+
+            .nav a::after {
+                left: 27px;
+            }
+
+            .realistic-plant {
+                display: block;
+                left: -2px;
+                top: 6px;
+                width: 72px;
+                height: 72px;
+                z-index: 4;
+            }
+
+            .realistic-coffee {
+                display: block;
+                right: -3px;
+                top: 4px;
+                width: 94px;
+                height: 72px;
+                z-index: 4;
+            }
+
+            .analog-watch {
+                display: block;
+                left: -1px;
+                top: 125px;
+                transform: scale(.62) rotate(-8deg);
+                transform-origin: top left;
+                z-index: 5;
+            }
+
+            .phone {
+                display: block;
+                right: 2px;
+                top: 126px;
+                width: 69px;
+                height: 130px;
+                z-index: 7;
+                transform: rotate(7deg);
+            }
+
+            .phone-screen {
+                height: 107px;
+                padding: 6px 4px;
+            }
+
+            .music-disc {
+                width: 29px;
+                height: 29px;
+                margin: 5px auto 4px;
+            }
+
+            .music-title {
+                font-size: 11px;
+            }
+
+            .music-subtitle {
+                font-size: 7px;
+            }
+
+            .music-progress {
+                margin: 6px 2px 5px;
+            }
+
+            .music-button {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .page h1::after,
+            .page h2::after {
+                animation-delay: .15s;
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            .nav a:hover::after,
+            .nav a.active::after,
+            .page h1::after,
+            .page h2::after,
+            .marker-highlight::before {
+                animation: none;
+                transform: scaleX(1) rotate(-.8deg);
+            }
+        }
+
+
+        /* FINAL DESK OBJECT POLISH */
+        .realistic-coffee {
+            width: 176px;
+            height: 144px;
+            top: 0;
+            right: 4px;
+            z-index: 4;
+            filter: drop-shadow(0 16px 10px rgba(0, 0, 0, .42));
+        }
+
+        .realistic-coffee svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            display: block;
+        }
+
+        .realistic-coffee img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .realistic-coffee {
+            animation: none !important;
+        }
+
+        .realistic-plant {
+            z-index: 4;
+        }
+
+        /* Physical watch: no floating/flat overlay */
+        .analog-watch {
+            z-index: 5;
+            transform: rotate(-7deg);
+            filter: drop-shadow(0 17px 10px rgba(0, 0, 0, .43));
+        }
+
+        .watch-face {
+            background: radial-gradient(circle at 34% 25%, #fffefa 0%, #f2eadc 52%, #d6c7b0 82%, #b8a88f 100%);
+            border: 7px solid #29231d;
+            box-shadow: inset 0 0 0 2px #d8c9b1, inset 0 0 15px rgba(0, 0, 0, .14), 0 0 0 2px #806d56, 0 5px 9px rgba(0, 0, 0, .28);
+        }
+
+        .watch-face::after {
+            inset: 6px;
+            background: linear-gradient(125deg, rgba(255, 255, 255, .18) 0%, rgba(255, 255, 255, .07) 18%, transparent 42%);
+            border-radius: 50%;
+        }
+
+        .watch-digital small {
+            display: block;
+            margin-top: 2px;
+            font: 700 7px ui-monospace, monospace;
+            letter-spacing: .4px;
+            color: #f0d99d;
+        }
+
+        .glasses {
+            width: 150px;
+            height: 64px;
+            left: 4px;
+            bottom: 62px;
+            font-size: 0;
+            transform: rotate(-9deg);
+            filter: drop-shadow(0 8px 5px rgba(0, 0, 0, .45));
+            z-index: 4;
+        }
+
+        .glasses svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            overflow: visible;
+        }
+
+        /* Real paper quote card */
+        .quote {
+            z-index: 5;
+            background: linear-gradient(105deg, #f4df98, #f8e8ad 48%, #ead18a);
+            border: 1px solid rgba(117, 91, 29, .28);
+            border-radius: 1px 3px 2px 1px;
+            box-shadow: 3px 7px 5px rgba(0, 0, 0, .20), 0 20px 26px rgba(0, 0, 0, .28), inset 0 0 18px rgba(139, 105, 28, .08), inset -2px -2px 0 rgba(104, 76, 24, .08);
+            text-shadow: 0 .2px 0 #fff7;
+            overflow: visible;
+        }
+
+        .quote::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border: 1px dashed rgba(120, 88, 27, .20);
+            pointer-events: none;
+        }
+
+        .quote::after {
+            content: "";
+            position: absolute;
+            right: -1px;
+            bottom: -1px;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, transparent 49%, #d8bd73 50%, #f4df98 72%);
+            box-shadow: -1px -1px 2px rgba(0, 0, 0, .08);
+        }
+
+        .quote-pin {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            left: 50%;
+            top: -6px;
+            transform: translateX(-50%);
+            background: radial-gradient(circle at 35% 30%, #fff, #b7a28a 28%, #675645 65%, #2d241b 100%);
+            box-shadow: 0 2px 3px #0006;
+            z-index: 3;
+        }
+
+        .quote-fold {
+            position: absolute;
+            left: 12px;
+            top: -7px;
+            width: 42px;
+            height: 15px;
+            background: rgba(255, 248, 219, .58);
+            transform: rotate(-4deg);
+            box-shadow: 0 1px 2px #0002;
+        }
+
+        .quote b {
+            position: relative;
+            z-index: 2;
+            font-size: 15px;
+        }
+
+        .quote>div,
+        .quote>small {
+            position: relative;
+            z-index: 2;
+        }
+
+        .music-hint {
+            position: absolute;
+            right: 84px;
+            top: 350px;
+            z-index: 8;
+            border: 0;
+            background: none;
+            color: #f7ead2;
+            font: 15px "Patrick Hand", cursive;
+            cursor: pointer;
+            transform: rotate(-4deg);
+            text-shadow: 0 2px 3px #0009;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 7px;
+            animation: hintFloat 2.8s ease-in-out infinite;
+        }
+
+        .music-hint strong {
+            font: 700 23px Arial, sans-serif;
+            color: #f4cf62;
+            text-shadow: 0 2px 3px #0008;
+        }
+
+        .music-hint:hover {
+            transform: rotate(-4deg) scale(1.05);
+        }
+
+        @keyframes hintFloat {
+
+            0%,
+            100% {
+                translate: 0 0
+            }
+
+            50% {
+                translate: 3px -2px
+            }
+        }
+
+        @media(max-width:900px) {
+            .realistic-coffee {
+                right: 0;
+                width: 132px;
+                height: 108px;
+                top: 0;
+            }
+
+            .glasses {
+                display: block;
+                left: 0;
+                bottom: 42px;
+                width: 116px;
+                height: 50px;
+            }
+
+            .music-hint {
+                right: 52px;
+                top: 350px;
+                font-size: 13px;
+                gap: 4px;
+            }
+
+            .music-hint strong {
+                font-size: 19px;
+            }
+        }
+
+        @media(max-width:650px) {
+            .glasses {
+                display: block;
+                left: 3px;
+                bottom: 18px;
+                width: 96px;
+                height: 42px;
+                z-index: 6;
+            }
+
+            .music-hint {
+                display: flex;
+                right: 18px;
+                top: 262px;
+                font-size: 11px;
+                padding: 3px 4px;
+                gap: 3px;
+            }
+
+            .music-hint strong {
+                font-size: 16px;
+            }
+
+            .realistic-coffee {
+                display: block;
+                right: -4px;
+                top: 3px;
+                width: 98px;
+                height: 80px;
+            }
+
+            .quote {
+                box-shadow: 2px 5px 4px rgba(0, 0, 0, .18), 0 12px 16px rgba(0, 0, 0, .22);
+            }
+        }
+
+
+
+        /* WATCH REDESIGN — closer to the supplied reference image */
+        /*
+           Easy sizing: change ONLY --watch-scale below.
+           1 = current size, 0.75 = 25% smaller, 1.25 = 25% larger.
+        */
+        .analog-watch {
+            --watch-scale: 0.60;
+            left: 18px;
+            top: 174px;
+            width: 176px;
+            height: 226px;
+            z-index: 7;
+            transform: scale(var(--watch-scale)) rotate(-6deg);
+            transform-origin: top left;
+            filter: drop-shadow(0 19px 13px rgba(0, 0, 0, .46));
+            pointer-events: none;
+        }
+
+        /* Keep the leather strap behind the case only — no extra/floating material outside it. */
+        .watch-strap {
+            left: 50px;
+            width: 76px;
+            height: 94px;
+            border: 0;
+            background:
+                linear-gradient(90deg, #24140e 0%, #4a2b1d 14%, #6b3f29 50%, #432619 86%, #21120d 100%);
+            box-shadow:
+                inset 0 0 0 1px rgba(20, 10, 6, .55),
+                inset 9px 0 12px rgba(0, 0, 0, .28),
+                inset -9px 0 12px rgba(0, 0, 0, .28),
+                0 2px 4px rgba(0, 0, 0, .22);
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .watch-strap::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 9px;
+            width: 7px;
+            border-radius: 5px;
+            background: repeating-linear-gradient(to bottom, #9a5b38 0 4px, #4a281a 4px 8px, #b06b43 8px 10px);
+            opacity: .92;
+            box-shadow: 1px 0 2px #160b06;
+        }
+
+        .watch-strap::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            right: 9px;
+            width: 7px;
+            border-radius: 5px;
+            background: repeating-linear-gradient(to bottom, #9a5b38 0 4px, #4a281a 4px 8px, #b06b43 8px 10px);
+            opacity: .92;
+            box-shadow: -1px 0 2px #160b06;
+        }
+
+        .watch-strap-top {
+            top: -49px;
+            border-radius: 24px 24px 10px 10px;
+        }
+
+        .watch-strap-bottom {
+            bottom: -49px;
+            border-radius: 10px 10px 24px 24px;
+        }
+
+        /* Brushed-metal lugs peeking out from behind the watch case. */
+        .analog-watch::before,
+        .analog-watch::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            width: 27px;
+            height: 72px;
+            top: 42px;
+            background: linear-gradient(105deg, #c9c9c4 0%, #f7f6ef 35%, #8e8d88 70%, #d9d8d1 100%);
+            box-shadow: inset 0 0 0 1px #77756f, 0 2px 4px rgba(0, 0, 0, .25);
+        }
+
+        .analog-watch::before {
+            left: 1px;
+            clip-path: polygon(0 22%, 100% 0, 100% 100%, 0 78%);
+            transform: rotate(-4deg);
+        }
+
+        .analog-watch::after {
+            right: 1px;
+            clip-path: polygon(0 0, 100% 22%, 100% 78%, 0 100%);
+            transform: rotate(4deg);
+        }
+
+        .watch-face {
+            left: 0;
+            top: 24px;
+            width: 176px;
+            height: 176px;
+            border-radius: 50%;
+            z-index: 3;
+            background: radial-gradient(circle at 36% 26%, #fffef9 0%, #f5eee1 49%, #e8ddca 78%, #c6b79e 100%);
+            border: 10px solid #171513;
+            box-shadow:
+                inset 0 0 0 3px #d9d1c3,
+                inset 0 0 0 6px #f7f2e8,
+                inset 0 0 18px rgba(0, 0, 0, .15),
+                0 0 0 5px #aaa69d,
+                0 0 0 8px #eeeae2,
+                0 0 0 10px #716e68,
+                0 8px 12px rgba(0, 0, 0, .34);
+            overflow: visible;
+        }
+
+        .watch-face::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            border: 1px solid rgba(89, 78, 62, .28);
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, .08);
+        }
+
+        .watch-face::after {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border-radius: 50%;
+            background: linear-gradient(132deg, rgba(255, 255, 255, .30), transparent 35% 100%);
+            pointer-events: none;
+            z-index: 6;
+        }
+
+        .watch-mark {
+            top: 7px;
+            width: 3px;
+            height: 10px;
+            background: #2b2926;
+            transform-origin: 50% 72px;
+            z-index: 2;
+        }
+
+        .watch-mark.m12 {
+            width: 6px;
+            height: 17px;
+            border-radius: 3px;
+        }
+
+        .watch-hand {
+            z-index: 4;
+            background: linear-gradient(90deg, #171717, #383838, #171717);
+            box-shadow: 1px 1px 2px rgba(255, 255, 255, .5), 0 2px 3px rgba(0, 0, 0, .18);
+        }
+
+        .watch-hand.hour {
+            height: 51px;
+            width: 9px;
+            border-radius: 8px;
+        }
+
+        .watch-hand.minute {
+            height: 66px;
+            width: 6px;
+            border-radius: 7px;
+        }
+
+        .watch-hand.second {
+            height: 72px;
+            width: 2px;
+            background: #b5362d;
+            box-shadow: none;
+        }
+
+        .watch-center {
+            width: 14px;
+            height: 14px;
+            background: #b7352e;
+            box-shadow: 0 0 0 3px #f3ede3, 0 1px 3px rgba(0, 0, 0, .45);
+        }
+
+        .watch-logo {
+            top: 42px;
+            font: 700 19px Georgia, serif;
+            letter-spacing: 0;
+            color: #2e241c;
+            z-index: 2;
+        }
+
+        .watch-crown {
+            right: -17px;
+            top: 93px;
+            width: 19px;
+            height: 38px;
+            border-radius: 5px;
+            background: repeating-linear-gradient(90deg, #575550 0 3px, #aaa8a1 3px 5px, #3c3b38 5px 7px);
+            border: 2px solid #77746d;
+            box-shadow: 2px 2px 4px #0007;
+            z-index: 4;
+        }
+
+        .watch-date-window {
+            position: absolute;
+            right: -2px;
+            top: 72px;
+            width: 25px;
+            height: 39px;
+            border-radius: 7px 0 0 7px;
+            background: linear-gradient(135deg, #746d61, #2a2825 55%, #575149);
+            box-shadow: inset 2px 0 3px rgba(255, 255, 255, .13), 0 1px 3px #0006;
+            z-index: 5;
+        }
+
+        @media(max-width:900px) {
+            .analog-watch {
+                left: 6px;
+                top: 168px;
+            }
+        }
+
+        @media(max-width:650px) {
+            .analog-watch {
+                display: block;
+                left: -4px;
+                top: 115px;
+                z-index: 6;
+            }
+        }
+
+
+        /* HARD FIX: remove the ORIGINAL circular watch shell from the base CSS.
+           The redesigned .watch-face is the only visible watch case. */
+        .analog-watch {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* FINAL WATCH CASE FIX: one case only — eliminate the legacy outer-watch look. */
+        .analog-watch {
+            width: 186px !important;
+            height: 238px !important;
+            overflow: visible !important;
+            transform: scale(var(--watch-scale)) rotate(-6deg) !important;
+            transform-origin: top left !important;
+        }
+
+        /* Do not render the previous lug/case shapes behind the redesigned watch. */
+        .analog-watch::before,
+        .analog-watch::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        /* Strap remains physically behind the single case. */
+        .watch-strap {
+            z-index: 0 !important;
+        }
+
+        .watch-face {
+            z-index: 3 !important;
+            width: 186px !important;
+            height: 186px !important;
+            top: 25px !important;
+            left: 0 !important;
+            border: 10px solid #171513 !important;
+            /* Only a restrained metal case edge; no stacked circles that look like a second watch. */
+            box-shadow:
+                inset 0 0 0 2px #ddd6c9,
+                inset 0 0 14px rgba(0, 0, 0, .13),
+                0 0 0 3px #b7b3aa,
+                0 7px 12px rgba(0, 0, 0, .30) !important;
+        }
+
+        /* Keep the strap visually underneath the case. */
+        .watch-strap-top,
+        .watch-strap-bottom {
+            z-index: 0 !important;
+        }
+
+        /* Mobile/tablet: preserve the same single-case construction. */
+        @media(max-width:900px) {
+            .analog-watch {
+                width: 186px !important;
+                height: 238px !important;
+            }
+
+            .watch-face {
+                width: 186px !important;
+                height: 186px !important;
             }
         }
     </style>
@@ -1234,88 +2522,125 @@
 <body>
     <header class="topbar">
         <a class="brand" href="#home">vishalprasad.co.in</a>
-        <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
-        <nav class="nav" id="nav"><a href="#home" class="active">Home</a><a href="#about">About</a><a
-                href="#experience">Experience</a><a href="#skills">Skills</a><a href="#blog">Blog</a><a
-                href="#contact">Contact</a></nav>
+        <button aria-expanded="false" aria-label="Open navigation" class="menu" id="menuBtn">☰</button>
+        <nav class="nav" id="nav">
+            <a class="active" href="#home"><svg aria-hidden="true" class="nav-icon" viewbox="0 0 24 24">
+                    <path d="M3 10.8 12 3l9 7.8v9.2a1 1 0 0 1-1 1h-5.2v-6.1H9.2V21H4a1 1 0 0 1-1-1z"></path>
+                    <path d="M9.2 21v-6.1h5.6V21"></path>
+                </svg><span>Home</span></a>
+            <a href="#about"><svg aria-hidden="true" class="nav-icon" viewbox="0 0 24 24">
+                    <circle cx="12" cy="7.2" r="3.2"></circle>
+                    <path d="M5.3 20c.6-4 2.9-6.2 6.7-6.2s6.1 2.2 6.7 6.2"></path>
+                </svg><span>About</span></a>
+            <a href="#experience"><svg aria-hidden="true" class="nav-icon" viewbox="0 0 24 24">
+                    <rect height="15" rx="2" width="16" x="4" y="5"></rect>
+                    <path d="M8 5V3h8v2M8 10h8M8 14h5"></path>
+                </svg><span>Experience</span></a>
+            <a href="#skills"><svg aria-hidden="true" class="nav-icon" viewbox="0 0 24 24">
+                    <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"></path>
+                    <path d="m4.5 7.7 7.5 4.1 7.5-4.1M12 11.8V21"></path>
+                </svg><span>Skills</span></a>
+            <a href="#blog"><svg aria-hidden="true" class="nav-icon" viewbox="0 0 24 24">
+                    <path d="M5 4.5h11.5A2.5 2.5 0 0 1 19 7v13H7a2 2 0 0 1-2-2z"></path>
+                    <path d="M7 20V7a2.5 2.5 0 0 1 2.5-2.5M10 9h6M10 13h6M10 17h4"></path>
+                </svg><span>Blog</span></a>
+            <a href="#contact"><svg aria-hidden="true" class="nav-icon" viewbox="0 0 24 24">
+                    <rect height="14" rx="2" width="18" x="3" y="5"></rect>
+                    <path d="m4 7 8 6 8-6"></path>
+                </svg><span>Contact</span></a>
+        </nav>
     </header>
     <main class="desk">
-        <div class="desk-decor plant" aria-hidden="true"><svg viewBox="0 0 140 140" role="presentation">
-                <ellipse cx="70" cy="112" rx="49" ry="12" fill="#17110b" opacity=".25" />
-                <path d="M25 65 Q70 48 115 65 L105 111 Q70 127 35 111Z" fill="#eee9df" stroke="#b9afa1"
-                    stroke-width="3" />
-                <ellipse cx="70" cy="65" rx="45" ry="12" fill="#d7d0c4" />
-                <g fill="#2e651d" stroke="#1c4614" stroke-width="1.5">
-                    <path d="M68 70C35 53 30 25 47 17 64 17 72 47 68 70Z" />
-                    <path d="M70 70C72 33 93 12 107 24 111 42 91 61 70 70Z" />
-                    <path d="M68 72C26 79 10 61 19 47 36 39 57 57 68 72Z" />
-                    <path d="M72 73C100 48 123 52 124 68 115 83 91 81 72 73Z" />
-                    <path d="M70 72C45 37 52 14 68 10 83 22 80 51 70 72Z" />
-                    <path d="M68 76C45 91 25 88 26 75 38 63 56 68 68 76Z" />
-                    <path d="M73 77C87 89 105 91 111 79 104 65 87 68 73 77Z" />
-                </g>
-                <g fill="#4b8a2b">
-                    <ellipse cx="62" cy="56" rx="7" ry="21" transform="rotate(-30 62 56)" />
-                    <ellipse cx="87" cy="49" rx="7" ry="22" transform="rotate(35 87 49)" />
-                </g>
-            </svg></div>
-        <div class="desk-decor coffee" aria-hidden="true"><span class="coffee-liquid"></span></div>
-        <div class="sticky-stack desk-decor">
-            <div class="mini-note">♧<br>Think<br>Deeply</div>
-            <div class="mini-note">◇<br>Build<br>Consistently</div>
-            <div class="mini-note">➶<br>Deliver<br>Impact</div>
+        <!-- <div aria-hidden="true" class="desk-decor plant realistic-plant"><img alt="" draggable="false"
+                src="img/plant.png" />
         </div>
-        <div class="phone desk-decor" aria-label="Current browser date and time"><span id="clockTime">--:--</span><span
-                id="clockDate">Loading date</span></div>
-        <div class="glasses desk-decor">👓</div>
-        <div class="pen desk-decor">━✒</div>
-        <section class="notebook" aria-label="Personal website notebook">
+        <div aria-hidden="true" class="desk-decor realistic-coffee"><img alt="" draggable="false"
+                src="img/coffee_cup.png" /></div>
+        </div> -->
+        <div aria-label="Analog clock showing the current time" class="analog-watch desk-decor">
+            <div class="watch-strap watch-strap-top"></div>
+            <div class="watch-strap watch-strap-bottom"></div>
+            <div class="watch-face">
+                <span class="watch-mark m1"></span><span class="watch-mark m2"></span><span
+                    class="watch-mark m3"></span><span class="watch-mark m4"></span><span
+                    class="watch-mark m5"></span><span class="watch-mark m6"></span>
+                <span class="watch-mark m7"></span><span class="watch-mark m8"></span><span
+                    class="watch-mark m9"></span><span class="watch-mark m10"></span><span
+                    class="watch-mark m11"></span><span class="watch-mark m12"></span>
+                <span class="watch-hand hour" id="watchHour"></span><span class="watch-hand minute"
+                    id="watchMinute"></span><span class="watch-hand second" id="watchSecond"></span><span
+                    class="watch-center"></span>
+                <span class="watch-logo">VP</span>
+            </div>
+            <span class="watch-crown"></span>
+        </div>
+        <div aria-label="Music player" class="phone desk-decor">
+            <div class="phone-speaker"></div>
+            <div class="phone-screen">
+                <div class="music-label">FOCUS MODE</div>
+                <div class="music-disc" id="musicDisc">♪</div>
+                <div class="music-title">Deep Work</div>
+                <div class="music-subtitle">ambient · 01</div>
+                <div class="music-progress"><span id="musicProgress"></span></div>
+                <button aria-label="Play focus music" aria-pressed="false" class="music-button" id="musicButton"
+                    type="button">▶</button>
+            </div>
+        </div>
+        <button aria-label="Click to play music" class="music-hint" id="musicHint" type="button"><span>Click to
+                play</span><strong>↑</strong></button>
+        <div aria-hidden="true" class="glasses desk-decor">
+
+        </div>
+        <div class="pen desk-decor"></div>
+        <section aria-label="Personal website notebook" class="notebook">
             <div class="page left">
                 <div class="tape"></div>
                 <h1 class="home-greeting">Hi, I’m Vishal Prasad</h1>
                 <h3 class="intro blue">14+ Years of Software Engineering Experience</h3>
-                <div class="portrait-wrap"><img class="portrait" src="img/vp_profile_2.png" alt=" Vishal Prasad"></div>
+                <div class="portrait-wrap"><img alt=" Vishal Prasad" class="portrait" src="img/vp_profile_2.png" />
+                </div>
             </div>
             <div class="page right">
-                <section id="home" class="panel active">
+                <section class="panel active" id="home">
                     <h2>Principal Engineer | Technical Lead</h2>
-                    <div class="intro blue">I love designing and developing end-to-end web apps, architecting new
-                        solutions and modernizing legacy systems, and helping teams learn, grow, and succeed together.
-                    </div>
+                    <div aria-live="polite" class="intro blue typing-copy"
+                        data-text="I love designing and developing end-to-end web apps, architecting new solutions and modernizing legacy systems, and helping teams learn, grow, and succeed together."
+                        id="heroTyping"></div>
                     <div class="rule"></div>
                     <div class="icon-grid">
                         <div><span class="skill-icon">⬡</span>
-                            <div class="skill-label">System<br>Design</div>
+                            <div class="skill-label">System<br />Design</div>
                         </div>
-                        <div><span class="skill-icon"> {</>} </span>
+                        <div><span class="skill-icon"> {} </span>
                             <div class="skill-label">Code</div>
                         </div>
                         <div><span class="skill-icon">☁</span>
-                            <div class="skill-label">Cloud<br>& DevOps</div>
+                            <div class="skill-label">Cloud<br />&amp; DevOps</div>
                         </div>
                         <div><span class="skill-icon">👨🏻‍💼</span>
-                            <div class="skill-label">Team<br>Leadership</div>
+                            <div class="skill-label">Team<br />Leadership</div>
                         </div>
                         <div><span class="skill-icon">💡</span>
-                            <div class="skill-label">Product<br>Thinking</div>
+                            <div class="skill-label">Product<br />Thinking</div>
                         </div>
                         <div><span class="skill-icon">👨‍💻</span>
-                            <div class="skill-label">Software <br />Engineering</div>
+                            <div class="skill-label">Software <br>Engineering</br></div>
                         </div>
                         <div><span class="skill-icon">✨</span>
-                            <div class="skill-label">AI<br>Integrations</div>
+                            <div class="skill-label">AI<br />Integrations</div>
                         </div>
                         <div><span class="skill-icon">👨🏻‍🏫</span>
-                            <div class="skill-label">Mentoring<br>Teams</div>
+                            <div class="skill-label">Mentoring<br />Teams</div>
                         </div>
                         <div><span class="skill-icon">📚</span>
-                            <div class="skill-label">Continuous <br>Learner</div>
+                            <div class="skill-label">Continuous <br />Learner</div>
                         </div>
                     </div>
                     <div class="rule"></div>
-                    <p class="intro blue">Turning ideas into scalable and meaningful products.</p>
+                    <p class="intro blue"><span class="marker-highlight">Turning ideas into scalable and meaningful
+                            products.</span></p>
                 </section>
-                <section id="about" class="panel">
+                <section class="panel" id="about">
                     <h2>About Me</h2>
                     <div class="copy">
                         <p>I’m an engineering leader with 14 years of experience in designing, building and scaling
@@ -1329,14 +2654,14 @@
                             foundation.</p>
                     </div>
                     <div class="stats">
-                        <div class="stat"><strong>14+</strong><span>Years in<br>Engineering</span></div>
-                        <div class="stat"><strong>Start-up → MNC</strong><span>Diverse Product<br>Environments</span>
+                        <div class="stat"><strong>14+</strong><span>Years in<br />Engineering</span></div>
+                        <div class="stat"><strong>Start-up → MNC</strong><span>Diverse Product<br />Environments</span>
                         </div>
-                        <div class="stat"><strong>Lead</strong><span>Engineering<br>Teams</span></div>
-                        <div class="stat"><strong>Impact</strong><span>Solve Real<br>Problems</span></div>
+                        <div class="stat"><strong>Lead</strong><span>Engineering<br />Teams</span></div>
+                        <div class="stat"><strong>Impact</strong><span>Solve Real<br />Problems</span></div>
                     </div>
                 </section>
-                <section id="experience" class="panel">
+                <section class="panel" id="experience">
                     <h2>Experience</h2>
                     <div class="experience-list">
                         <article class="job">
@@ -1359,37 +2684,37 @@
                         </article>
                     </div>
                 </section>
-                <section id="skills" class="panel">
-                    <h2>Core Expertise & Skills</h2>
+                <section class="panel" id="skills">
+                    <h2>Core Expertise &amp; Skills</h2>
                     <div class="skill-columns">
                         <div class="skill-group">
                             <h3>♧ Languages</h3>
-                            <p>Java <br>JavaScript<br>Python<br>SQL</p>
+                            <p>Java <br />JavaScript<br />Python<br />SQL</p>
                         </div>
                         <div class="skill-group">
                             <h3>▣ Frameworks</h3>
-                            <p>Spring Boot <br>JPA / Hibernate<br>REST APIs<br>Maven / Gradle</p>
+                            <p>Spring Boot <br />JPA / Hibernate<br />REST APIs<br />Maven / Gradle</p>
                         </div>
                         <div class="skill-group">
-                            <h3>⬡ Cloud & DevOps</h3>
-                            <p>AWS, Azure<br>Docker, Kubernetes (AKS)<br>CI/CD, GitHub Actions<br>Jenkins</p>
+                            <h3>⬡ Cloud &amp; DevOps</h3>
+                            <p>AWS, Azure<br />Docker, Kubernetes (AKS)<br />CI/CD, GitHub Actions<br />Jenkins</p>
                         </div>
                         <div class="skill-group">
                             <h3>▤ Databases</h3>
-                            <p>PostgreSQL, MySQL<br>MongoDB<br>Redis</p>
+                            <p>PostgreSQL, MySQL<br />MongoDB<br />Redis</p>
                         </div>
                         <div class="skill-group">
                             <h3>♧ Messaging</h3>
-                            <p>Apache Kafka<br>Schema Registry<br>Confluent</p>
+                            <p>Apache Kafka<br />Schema Registry<br />Confluent</p>
                         </div>
                         <div class="skill-group">
-                            <h3>⚙ Tools & Monitoring</h3>
-                            <p>IntelliJ, VS Code<br>Git, GitHub, JIRA<br>Datadog, Splunk<br>OpenTelemetry</p>
+                            <h3>⚙ Tools &amp; Monitoring</h3>
+                            <p>IntelliJ, VS Code<br />Git, GitHub, JIRA<br />Datadog, Splunk<br />OpenTelemetry</p>
                         </div>
                     </div>
                 </section>
-                <section id="blog" class="panel">
-                    <h2>Blog & Notes</h2>
+                <section class="panel" id="blog">
+                    <h2>Blog &amp; Notes</h2>
                     <div class="blog-card">
                         <h3>Engineering at Scale</h3>
                         <p>Thoughts on architecture, reliability and building systems that last.</p>
@@ -1404,28 +2729,30 @@
                     </div>
                     <p class="copy blue">New articles coming soon.</p>
                 </section>
-                <section id="contact" class="panel">
+                <section class="panel" id="contact">
                     <h2>Let’s Connect</h2>
                     <div class="contact-grid">
                         <div class="contact-info">
-                            <div>✉ &nbsp; vishalprasad.co.in@gmail.com</div>
-                            <div>⌕ &nbsp; Bengaluru, India</div>
-                            <div>in &nbsp; linkedin.com/in/vishalprasad2018</div>
-                            <div>↗ &nbsp; vishalprasad.co.in</div>
+                            <div>✉   vishalprasad.co.in@gmail.com</div>
+                            <div>⌕   Bengaluru, India</div>
+                            <div>in   linkedin.com/in/vishalprasad2018</div>
+                            <div>↗   vishalprasad.co.in</div>
                         </div>
-                        <form class="contact-form"
+                        <form
                             action="https://docs.google.com/forms/d/e/1FAIpQLScNVkpif6GscJgMUjfPVc-U2kJdTDfpQ4Snw2_gUDBG53g1sg/viewform"
-                            target="_blank"><input placeholder="Your Name" aria-label="Your Name"><input type="email"
-                                placeholder="Your Email" aria-label="Your Email"><input placeholder="Subject"
-                                aria-label="Subject"><textarea rows="4" placeholder="Your Message"
-                                aria-label="Your Message"></textarea><button type="submit">Open Contact Form ↗</button>
+                            class="contact-form" target="_blank"><input aria-label="Your Name"
+                                placeholder="Your Name" /><input aria-label="Your Email" placeholder="Your Email"
+                                type="email" /><input aria-label="Subject" placeholder="Subject" /><textarea
+                                aria-label="Your Message" placeholder="Your Message" rows="4"></textarea><button
+                                type="submit">Open Contact Form ↗</button>
                             <p style="font:13px 'Patrick Hand';margin-top:8px">Opens the contact form in a new tab.</p>
                         </form>
                     </div>
                 </section>
             </div>
         </section>
-        <aside class="quote"><b>Quote of the day</b>“The best way to predict the future is to create it.”<br><small>—
+        <aside class="quote"><span class="quote-pin"></span><span class="quote-fold"></span><b>Quote of the day</b>“The
+            best way to predict the future is to create it.”<br /><small>—
                 Peter
                 Drucker</small></aside>
     </main>
@@ -1434,7 +2761,6 @@
                 href="#experience">Experience</a><a href="#contact">Contact</a></div>© <span id="year"></span> Vishal
         Prasad · Built with curiosity and purpose
     </footer>
-
     <script src="quotes.js"></script>
     <script>
         (() => {
@@ -1452,7 +2778,6 @@
             quoteCard.append(heading, quoteText, author);
         })();
     </script>
-
     <script>
         (() => {
             const nav = document.getElementById('nav');
@@ -1519,15 +2844,108 @@
             }
             const year = document.getElementById('year');
             if (year) year.textContent = new Date().getFullYear();
-            function updateClock() {
-                const time = document.getElementById('clockTime');
-                const date = document.getElementById('clockDate');
-                if (!time || !date) return;
+            function updateWatch() {
+                const hour = document.getElementById('watchHour');
+                const minute = document.getElementById('watchMinute');
+                const second = document.getElementById('watchSecond');
+                if (!hour || !minute || !second) return;
                 const now = new Date();
-                time.textContent = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' }).format(now);
-                date.textContent = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }).format(now);
+                const seconds = now.getSeconds();
+                const minutes = now.getMinutes() + seconds / 60;
+                const hours = (now.getHours() % 12) + minutes / 60;
+                hour.style.transform = `translateX(-50%) rotate(${hours * 30}deg)`;
+                minute.style.transform = `translateX(-50%) rotate(${minutes * 6}deg)`;
+                second.style.transform = `translateX(-50%) rotate(${seconds * 6}deg)`;
             }
-            updateClock(); window.setInterval(updateClock, 1000);
+            updateWatch(); window.setInterval(updateWatch, 250);
+
+            const typingTarget = document.getElementById('heroTyping');
+            if (typingTarget) {
+                const fullText = typingTarget.dataset.text || '';
+                const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (reduced) {
+                    typingTarget.textContent = fullText;
+                } else {
+                    let index = 0;
+                    const typeNext = () => {
+                        if (index >= fullText.length) return;
+                        typingTarget.textContent += fullText.charAt(index++);
+                        window.setTimeout(typeNext, index < 55 ? 22 : 17);
+                    };
+                    window.setTimeout(typeNext, 500);
+                }
+            }
+
+            // A small self-contained ambient loop: music starts only after the visitor clicks Play.
+            const musicButton = document.getElementById('musicButton');
+            const phone = document.querySelector('.phone');
+            let audioContext = null;
+            let musicTimer = null;
+            let musicStep = 0;
+            let masterGain = null;
+            const melody = [261.63, 329.63, 392.00, 329.63, 293.66, 349.23, 440.00, 349.23];
+
+            function playNote(freq, duration = 0.42) {
+                if (!audioContext || !masterGain) return;
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.055, audioContext.currentTime + 0.025);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + duration);
+                osc.connect(gain).connect(masterGain);
+                osc.start();
+                osc.stop(audioContext.currentTime + duration + 0.03);
+            }
+
+            async function startMusic() {
+                try {
+                    const AudioCtor = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioCtor) throw new Error('Web Audio is not supported in this browser.');
+                    audioContext = audioContext || new AudioCtor();
+                    if (audioContext.state === 'suspended') await audioContext.resume();
+                    masterGain = audioContext.createGain();
+                    masterGain.gain.setValueAtTime(0.72, audioContext.currentTime);
+                    masterGain.connect(audioContext.destination);
+                    musicStep = 0;
+                    playNote(melody[musicStep++ % melody.length]);
+                    musicTimer = window.setInterval(() => playNote(melody[musicStep++ % melody.length]), 620);
+                    phone.classList.add('playing');
+                    musicButton.textContent = 'Ⅱ';
+                    musicButton.setAttribute('aria-label', 'Pause focus music');
+                    musicButton.setAttribute('aria-pressed', 'true');
+                } catch (err) {
+                    console.warn('Music could not start:', err);
+                    musicButton.textContent = '▶';
+                    musicButton.setAttribute('aria-label', 'Music unavailable');
+                }
+            }
+
+            function stopMusic() {
+                if (musicTimer) window.clearInterval(musicTimer);
+                musicTimer = null;
+                if (masterGain) {
+                    const oldGain = masterGain;
+                    oldGain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.18);
+                    window.setTimeout(() => { try { oldGain.disconnect(); } catch (_) { } }, 250);
+                }
+                masterGain = null;
+                phone.classList.remove('playing');
+                musicButton.textContent = '▶';
+                musicButton.setAttribute('aria-label', 'Play focus music');
+                musicButton.setAttribute('aria-pressed', 'false');
+            }
+
+            if (musicButton) {
+                musicButton.addEventListener('click', () => {
+                    if (musicTimer) stopMusic(); else startMusic();
+                });
+            }
+            const musicHint = document.getElementById('musicHint');
+            if (musicHint && musicButton) {
+                musicHint.addEventListener('click', () => musicButton.click());
+            }
         })();
     </script>
 </body>
