@@ -2516,6 +2516,289 @@
                 height: 186px !important;
             }
         }
+
+
+        /* Handwritten calendar widget — no tear-off animation */
+        .calendar-note-wrap {
+            position: absolute;
+            z-index: 6;
+            left: 0;
+            top: 330px;
+            width: 340px;
+            min-height: 470px;
+            transform: scale(.54) rotate(-1.8deg);
+            transform-origin: top left;
+            filter: drop-shadow(0 18px 14px rgba(0, 0, 0, .22));
+            pointer-events: auto
+        }
+
+        .calendar-note {
+            position: relative;
+            width: 340px;
+            min-height: 470px;
+            padding: 68px 34px 38px;
+            background: #f2df62;
+            background-image: linear-gradient(105deg, rgba(255, 255, 255, .20), rgba(255, 255, 255, .05) 30%, transparent 60%), radial-gradient(circle at 18% 12%, rgba(255, 255, 255, .16), transparent 26%), repeating-linear-gradient(8deg, transparent 0 3px, rgba(80, 65, 10, .025) 3px 4px);
+            border: 1px solid rgba(82, 65, 0, .18);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, .15), 0 10px 18px rgba(0, 0, 0, .18), 0 24px 32px rgba(0, 0, 0, .14);
+            overflow: hidden
+        }
+
+        .calendar-note:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .10;
+            background: radial-gradient(circle at 15% 20%, #fff 0 1px, transparent 2px), radial-gradient(circle at 80% 70%, #786600 0 1px, transparent 2px);
+            background-size: 23px 27px, 31px 37px
+        }
+
+        .calendar-note:after {
+            content: "";
+            position: absolute;
+            left: -2px;
+            right: -2px;
+            bottom: -1px;
+            height: 10px;
+            pointer-events: none;
+            background: #f2df62;
+            opacity: .9
+        }
+
+        .calendar-handwriting {
+            position: relative;
+            z-index: 2;
+            color: #082d45;
+            font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", "Chalkboard SE", cursive;
+            text-align: center;
+            font-weight: 500
+        }
+
+        .calendar-view {
+            display: none;
+            position: relative;
+            z-index: 2
+        }
+
+        .calendar-view.active {
+            display: block
+        }
+
+        .calendar-note .weekday {
+            font-size: 45px;
+            line-height: 1;
+            letter-spacing: 1px;
+            transform: rotate(-1deg);
+            margin-bottom: 35px
+        }
+
+        .calendar-note .date {
+            font-size: 39px;
+            line-height: 1.2;
+            transform: rotate(1deg)
+        }
+
+        .calendar-note .year {
+            font-size: 43px;
+            margin-top: 6px;
+            transform: rotate(-1deg)
+        }
+
+        .calendar-note .format {
+            margin-top: 27px;
+            font-size: 22px;
+            line-height: 1.15;
+            transform: rotate(-1.5deg);
+            user-select: none
+        }
+
+        .calendar-note .format span {
+            cursor: pointer;
+            display: inline-block;
+            padding: 2px 4px;
+            transition: .2s ease
+        }
+
+        .calendar-note .format span:hover {
+            transform: scale(1.05) rotate(-1deg)
+        }
+
+        .calendar-note .format span.active {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px
+        }
+
+        .calendar-note .week-title,
+        .calendar-note .month-calendar-title {
+            font-size: 29px;
+            margin-bottom: 14px
+        }
+
+        .calendar-note .week-days,
+        .calendar-note .month-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center
+        }
+
+        .calendar-note .week-day {
+            min-height: 72px;
+            padding: 7px 2px;
+            border: 1px dashed rgba(8, 45, 69, .25);
+            cursor: pointer
+        }
+
+        .calendar-note .week-day-name {
+            display: block;
+            font-size: 10px;
+            font-weight: bold;
+            opacity: .65;
+            margin-bottom: 7px
+        }
+
+        .calendar-note .week-day-number {
+            font-size: 21px
+        }
+
+        .calendar-note .month-calendar .dow {
+            font-size: 11px;
+            font-weight: bold;
+            opacity: .65;
+            padding-bottom: 5px
+        }
+
+        .calendar-note .month-calendar .date-cell {
+            min-height: 30px;
+            padding-top: 5px;
+            font-size: 17px;
+            cursor: pointer;
+            border-radius: 50%
+        }
+
+        .calendar-note .month-calendar .date-cell:hover {
+            background: rgba(8, 45, 69, .08)
+        }
+
+        .calendar-note .weekend,
+        .calendar-note .weekend .week-day-name,
+        .calendar-note .weekend .week-day-number {
+            color: #b52f2f
+        }
+
+        .calendar-note .selected {
+            position: relative !important;
+            background: transparent !important;
+            color: #082d45;
+            font-weight: 600
+        }
+
+        .calendar-note .selected:after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            border: 2px solid #082d45;
+            border-radius: 48% 52% 51% 46%;
+            transform: rotate(-5deg);
+            pointer-events: none
+        }
+
+        .calendar-note .week-day.selected:after {
+            inset: 3px;
+            transform: rotate(2deg)
+        }
+
+        .calendar-note .weekend.selected {
+            color: #b52f2f !important
+        }
+
+        .calendar-note .note-nav {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 22px
+        }
+
+        .calendar-note .arrow {
+            border: 0;
+            background: transparent;
+            color: #082d45;
+            font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", "Chalkboard SE", cursive;
+            font-size: 34px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 2px 10px;
+            text-shadow: .45px .45px 0 #082d45;
+            transition: transform .18s ease
+        }
+
+        .calendar-note .arrow-prev {
+            transform: rotate(-8deg)
+        }
+
+        .calendar-note .arrow-next {
+            transform: rotate(8deg)
+        }
+
+        .calendar-note .arrow-prev:hover {
+            transform: rotate(-8deg) scale(1.22)
+        }
+
+        .calendar-note .arrow-next:hover {
+            transform: rotate(8deg) scale(1.22)
+        }
+
+        .calendar-note .day-count {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            margin-top: 13px;
+            white-space: normal;
+            color: #082d45;
+            font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", "Chalkboard SE", cursive;
+            font-size: 20px;
+            line-height: 1.15;
+            font-weight: 600;
+            letter-spacing: .15px;
+            text-shadow: .18px .18px 0 currentColor;
+            transform: rotate(-1deg);
+            text-align: center
+        }
+
+        .calendar-note .day-count .count-line {
+            display: block;
+            width: 100%;
+            white-space: nowrap
+        }
+
+        .calendar-note .count-separator {
+            display: none
+        }
+
+        @media(max-width:900px) {
+            .calendar-note-wrap {
+                left: 5px;
+                top: 315px;
+                transform: scale(.48) rotate(-1.8deg)
+            }
+        }
+
+        @media(max-width:650px) {
+            .calendar-note-wrap {
+                left: 2px;
+                top: 270px;
+                transform: scale(.43) rotate(-1.8deg)
+            }
+        }
     </style>
 </head>
 
@@ -2573,6 +2856,36 @@
                 <span class="watch-logo">VP</span>
             </div>
             <span class="watch-crown"></span>
+        </div>
+        <div class="calendar-note-wrap" aria-label="Handwritten date calendar">
+            <div class="calendar-note">
+                <div class="calendar-handwriting">
+                    <div id="vpDayView" class="calendar-view active">
+                        <div id="vpWeekday" class="weekday"></div>
+                        <div id="vpDate" class="date"></div>
+                        <div id="vpYear" class="year"></div>
+                    </div>
+                    <div id="vpWeekView" class="calendar-view">
+                        <div id="vpWeekTitle" class="week-title"></div>
+                        <div id="vpWeekDays" class="week-days"></div>
+                    </div>
+                    <div id="vpMonthView" class="calendar-view">
+                        <div id="vpMonthTitle" class="month-calendar-title"></div>
+                        <div id="vpMonthCalendar" class="month-calendar"></div>
+                    </div>
+                    <div class="format">
+                        <span id="vpWeekTab">Week</span>
+                        <span id="vpDayTab" class="active">Today</span>
+                        <span id="vpMonthTab">Month</span>
+                    </div>
+                    <div class="note-nav">
+                        <button class="arrow arrow-prev" id="vpPrev" aria-label="Previous">&lt;&lt;</button>
+                        <button class="arrow arrow-next" id="vpNext" aria-label="Next">&gt;&gt;</button>
+                    </div>
+                    <div class="day-count"><span id="vpDayProgress" class="count-line"></span><span id="vpDaysRemaining"
+                            class="count-line"></span></div>
+                </div>
+            </div>
         </div>
         <div aria-label="Music player" class="phone desk-decor">
             <div class="phone-speaker"></div>
@@ -2946,6 +3259,28 @@
             if (musicHint && musicButton) {
                 musicHint.addEventListener('click', () => musicButton.click());
             }
+        })();
+    </script>
+    <script>
+        (function () {
+            const root = document.querySelector('.calendar-note-wrap') || document.querySelector('.calendar-note');
+            if (!root) return;
+            const $ = id => document.getElementById(id);
+            let selectedDate = new Date(), viewDate = new Date(), activeView = 'day';
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const same = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+            const today = d => same(d, new Date());
+            function startOfWeek(d) { const x = new Date(d); const day = (x.getDay() + 6) % 7; x.setDate(x.getDate() - day); x.setHours(0, 0, 0, 0); return x; }
+            function renderDay() { $('vpWeekday').textContent = selectedDate.toLocaleDateString('en-US', { weekday: 'long' }); $('vpDate').textContent = selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) + ','; $('vpYear').textContent = selectedDate.getFullYear(); renderCount(); }
+            function renderWeek() { const start = startOfWeek(viewDate), out = []; for (let i = 0; i < 7; i++) { const d = new Date(start); d.setDate(start.getDate() + i); out.push(`<div class="week-day ${same(d, selectedDate) ? 'selected ' : ''}${today(d) ? 'today ' : ''}${(d.getDay() === 0 || d.getDay() === 6) ? 'weekend' : ''}" data-ts="${d.getTime()}"><span class="week-day-name">${weekdays[i]}</span><span class="week-day-number">${d.getDate()}</span></div>`) } const end = new Date(start); end.setDate(start.getDate() + 6); $('vpWeekTitle').textContent = `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`; $('vpWeekDays').innerHTML = out.join(''); $('vpWeekDays').querySelectorAll('[data-ts]').forEach(e => e.onclick = () => selectDate(Number(e.dataset.ts))); renderCount(); }
+            function renderMonth() { const y = viewDate.getFullYear(), m = viewDate.getMonth(); $('vpMonthTitle').textContent = `${monthNames[m]} ${y}`; let out = weekdays.map(x => `<div class="dow">${x}</div>`).join(''); const first = new Date(y, m, 1), offset = (first.getDay() + 6) % 7, days = new Date(y, m + 1, 0).getDate(); for (let i = 0; i < offset; i++)out += '<div></div>'; for (let n = 1; n <= days; n++) { const d = new Date(y, m, n), sel = same(d, selectedDate), we = d.getDay() === 0 || d.getDay() === 6; out += `<div class="date-cell ${sel ? 'selected ' : ''}${we ? 'weekend' : ''}" data-ts="${d.getTime()}">${n}</div>` } $('vpMonthCalendar').innerHTML = out; $('vpMonthCalendar').querySelectorAll('[data-ts]').forEach(e => e.onclick = () => selectDate(Number(e.dataset.ts))); renderCount(); }
+            function renderCount() { const y = selectedDate.getFullYear(), start = new Date(y, 0, 1), end = new Date(y + 1, 0, 1), day = Math.floor((selectedDate - start) / 86400000) + 1, total = Math.round((end - start) / 86400000); $('vpDayProgress').textContent = `Day ${day} of ${total}`; $('vpDaysRemaining').textContent = `${total - day} days remaining`; }
+            function renderAll() { renderDay(); renderWeek(); renderMonth(); }
+            function showView(view) { activeView = view; if (view === 'week' || view === 'month') { selectedDate = new Date(); viewDate = new Date(); } document.querySelectorAll('.calendar-note .calendar-view').forEach(x => x.classList.remove('active')); $('vp' + view.charAt(0).toUpperCase() + view.slice(1) + 'View').classList.add('active'); document.querySelectorAll('.calendar-note .format span').forEach(x => x.classList.remove('active')); $('vp' + view.charAt(0).toUpperCase() + view.slice(1) + 'Tab').classList.add('active'); renderAll(); }
+            function navigate(dir) { if (activeView === 'day') { selectedDate.setDate(selectedDate.getDate() + dir); viewDate = new Date(selectedDate) } else if (activeView === 'week') { viewDate.setDate(viewDate.getDate() + dir * 7) } else { viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + dir, 1) } renderAll(); }
+            function selectDate(ts) { selectedDate = new Date(ts); viewDate = new Date(selectedDate); showView('day'); }
+            $('vpWeekTab').onclick = () => showView('week'); $('vpDayTab').onclick = () => showView('day'); $('vpMonthTab').onclick = () => showView('month'); $('vpPrev').onclick = () => navigate(-1); $('vpNext').onclick = () => navigate(1); renderAll();
         })();
     </script>
 </body>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handwritten Date Note</title>
+<style>
+*{box-sizing:border-box}
+:root{--note:#c9f33b;--ink:#082d45}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#211a15,#4b3425);overflow-x:hidden}
+.scene{padding:40px}
+.note{position:relative;width:340px;min-height:470px;padding:68px 34px 38px;background:linear-gradient(105deg,rgba(255,255,255,.22),rgba(255,255,255,.05) 30%,transparent 60%,rgba(92,116,0,.08)),radial-gradient(circle at 18% 12%,rgba(255,255,255,.18),transparent 26%),var(--note);border:1px solid rgba(82,105,0,.18);box-shadow:0 2px 2px rgba(0,0,0,.18),0 10px 18px rgba(0,0,0,.22),0 24px 32px rgba(0,0,0,.18);transform:rotate(-1.8deg);overflow:hidden}
+.note:before,.note:after{content:"";position:absolute;inset:0;pointer-events:none}.note:before{opacity:.1;background:radial-gradient(circle at 15% 20%,#fff 0 1px,transparent 2px),radial-gradient(circle at 80% 70%,#577000 0 1px,transparent 2px);background-size:23px 27px,31px 37px}.note:after{opacity:.12;background:repeating-linear-gradient(8deg,transparent 0 3px,rgba(60,80,20,.08) 3px 4px),repeating-linear-gradient(94deg,transparent 0 7px,rgba(255,255,255,.1) 7px 8px);mix-blend-mode:multiply}
+.handwriting{position:relative;z-index:2;color:var(--ink);font-family:"Segoe Print","Bradley Hand","Comic Sans MS","Chalkboard SE",cursive;text-align:center;font-weight:500}
+.calendar-view{display:none;position:relative;z-index:2;color:var(--ink);font-family:"Segoe Print","Bradley Hand","Comic Sans MS","Chalkboard SE",cursive}.calendar-view.active{display:block}
+.weekday{font-size:45px;line-height:1;letter-spacing:1px;transform:rotate(-1deg);margin-bottom:35px}.date{font-size:39px;line-height:1.2;transform:rotate(1deg)}.year{font-size:43px;margin-top:6px;transform:rotate(-1deg)}
+.format{margin-top:27px;font-family:"Segoe Print","Bradley Hand","Comic Sans MS","Chalkboard SE",cursive;font-size:22px;line-height:1.15;transform:rotate(-1.5deg);user-select:none}.format span{cursor:pointer;display:inline-block;padding:2px 4px;transition:.2s ease}.format span:hover{transform:scale(1.05) rotate(-1deg)}.format span.active{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.week-title,.month-calendar-title{font-size:29px;margin-bottom:14px}.week-days,.month-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}.week-day{min-height:72px;padding:7px 2px;border:1px dashed rgba(8,45,69,.25);cursor:pointer}.week-day-name{display:block;font-size:10px;font-weight:bold;opacity:.65;margin-bottom:7px}.week-day-number{font-size:21px}.month-calendar .dow{font-size:11px;font-weight:bold;opacity:.65;padding-bottom:5px}.month-calendar .date-cell{min-height:30px;padding-top:5px;font-size:17px;cursor:pointer;border-radius:50%}.month-calendar .date-cell:hover{background:rgba(8,45,69,.08)}
+.weekend,.weekend .week-day-name,.weekend .week-day-number{color:#b52f2f}
+.selected{position:relative!important;background:transparent!important;color:var(--ink);font-weight:600}.selected:after{content:"";position:absolute;inset:2px;border:2px solid var(--ink);border-radius:48% 52% 51% 46%;transform:rotate(-5deg);pointer-events:none}.week-day.selected:after{inset:3px;transform:rotate(2deg)}.weekend.selected{color:#b52f2f!important}
+.note-nav{position:relative;z-index:2;display:flex;justify-content:center;gap:24px;margin-top:22px}.arrow{border:0;background:transparent;color:var(--ink);font-family:"Segoe Print","Bradley Hand","Comic Sans MS","Chalkboard SE",cursive;font-size:34px;line-height:1;cursor:pointer;padding:2px 10px;text-shadow:.45px .45px 0 var(--ink);transition:transform .18s ease}.arrow-prev{transform:rotate(-8deg)}.arrow-next{transform:rotate(8deg)}.arrow-prev:hover{transform:rotate(-8deg) scale(1.22)}.arrow-next:hover{transform:rotate(8deg) scale(1.22)}
+.day-count{position:relative;z-index:2;width:100%;display:flex;justify-content:center;align-items:center;gap:7px;margin-top:13px;white-space:nowrap;color:var(--ink);font-family:"Segoe Print","Bradley Hand","Comic Sans MS","Chalkboard SE",cursive;font-size:13px;line-height:1;transform:rotate(-1deg)}.count-separator{opacity:.7;font-size:12px}
+@media(max-width:430px){.scene{padding:20px}.note{width:310px;padding-left:25px;padding-right:25px}.weekday{font-size:40px}.date{font-size:35px}.year{font-size:39px}}
+
+/* =========================================================
+   Pinned-style paper + tear-off transition
+   ========================================================= */
+
+.note {
+  --note-color: #f2df62 !important;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.18), transparent 35%),
+    radial-gradient(circle at 20% 18%, rgba(255,255,255,.15) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 80% 70%, rgba(80,60,10,.055) 0 1px, transparent 1.5px),
+    #f2df62 !important;
+  background-size: auto, 17px 19px, 23px 21px, auto !important;
+  box-shadow:
+    0 18px 30px rgba(35,30,10,.22),
+    0 4px 8px rgba(35,30,10,.10);
+}
+
+/* Keep the paper edge clean until a view change happens. */
+.note::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -1px;
+  height: 12px;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(242,223,98,0), rgba(130,105,20,.10)),
+    #f2df62;
+  clip-path: polygon(
+    0 10%, 4% 34%, 8% 18%, 12% 42%, 16% 23%,
+    21% 49%, 26% 26%, 31% 43%, 36% 19%, 41% 46%,
+    46% 27%, 51% 50%, 56% 24%, 61% 42%, 66% 17%,
+    71% 45%, 76% 23%, 81% 49%, 86% 28%, 91% 43%,
+    96% 20%, 100% 36%, 100% 100%, 0 100%
+  );
+  transition: filter .25s ease;
+}
+
+/* Tear-off animation: the paper briefly lifts, shifts and settles. */
+.note.tear-transition {
+  animation: tearOffPage 620ms cubic-bezier(.2,.78,.25,1);
+}
+
+.note.tear-transition::after {
+  animation: tornEdge 620ms ease;
+}
+
+@keyframes tearOffPage {
+  0% {
+    transform: rotate(-1.8deg) translateY(0);
+    filter: brightness(1);
+  }
+  18% {
+    transform: rotate(-2.8deg) translateY(-3px);
+    filter: brightness(1.035);
+  }
+  48% {
+    transform: rotate(1deg) translateY(7px);
+    filter: brightness(.98);
+  }
+  72% {
+    transform: rotate(-2.4deg) translateY(-2px);
+    filter: brightness(1.02);
+  }
+  100% {
+    transform: rotate(-1.8deg) translateY(0);
+    filter: brightness(1);
+  }
+}
+
+@keyframes tornEdge {
+  0% {
+    transform: translateY(0) scaleX(1);
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+  }
+  35% {
+    transform: translateY(3px) scaleX(1.015);
+    filter: drop-shadow(0 3px 2px rgba(70,55,10,.18));
+  }
+  65% {
+    transform: translateY(-1px) scaleX(.995);
+  }
+  100% {
+    transform: translateY(0) scaleX(1);
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+  }
+}
+
+/* A faint fiber line above the torn edge. */
+.note .tear-fiber {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 1px;
+  z-index: 6;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(110,90,20,.13) 0 3px,
+    transparent 3px 8px
+  );
+  opacity: .65;
+}
+
+/* Accessibility: respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  .note.tear-transition,
+  .note.tear-transition::after {
+    animation: none;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="scene">
+  <div class="note"><div class="tear-fiber"></div>
+    <div class="handwriting">
+      <div id="dayView" class="calendar-view active">
+        <div id="weekday" class="weekday"></div>
+        <div id="date" class="date"></div>
+        <div id="year" class="year"></div>
+      </div>
+      <div id="weekView" class="calendar-view">
+        <div id="weekTitle" class="week-title"></div>
+        <div id="weekDays" class="week-days"></div>
+      </div>
+      <div id="monthView" class="calendar-view">
+        <div id="monthTitle" class="month-calendar-title"></div>
+        <div id="monthCalendar" class="month-calendar"></div>
+      </div>
+      <div class="format">
+        <span id="weekTab" onclick="showView('week')">Week</span>
+        <span id="dayTab" class="active" onclick="showView('day')">Today</span>
+        <span id="monthTab" onclick="showView('month')">Month</span>
+      </div>
+      <div class="note-nav">
+        <button class="arrow arrow-prev" onclick="navigate(-1)" aria-label="Previous">&lt;&lt;</button>
+        <button class="arrow arrow-next" onclick="navigate(1)" aria-label="Next">&gt;&gt;</button>
+      </div>
+      <div class="day-count"><span id="dayProgress"></span><span class="count-separator">|</span><span id="daysRemaining"></span></div>
+    </div>
+  </div>
+</div>
+<script>
+let selectedDate = new Date();
+let viewDate = new Date();
+let activeView = 'day';
+
+const monthNames = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December'
+];
+
+const weekdays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+function isSameDate(a, b) {
+  return a.getFullYear() === b.getFullYear() &&
+         a.getMonth() === b.getMonth() &&
+         a.getDate() === b.getDate();
+}
+
+function isToday(d) {
+  return isSameDate(d, new Date());
+}
+
+function startOfWeek(d) {
+  const x = new Date(d);
+  const day = (x.getDay() + 6) % 7;
+  x.setDate(x.getDate() - day);
+  x.setHours(0, 0, 0, 0);
+  return x;
+}
+
+function renderDay() {
+  weekday.textContent = selectedDate.toLocaleDateString('en-US', {weekday:'long'});
+  date.textContent = selectedDate.toLocaleDateString('en-US', {
+    month:'long',
+    day:'numeric'
+  }) + ',';
+  year.textContent = selectedDate.getFullYear();
+  renderDayCount();
+}
+
+function renderWeek() {
+  const start = startOfWeek(viewDate);
+  const out = [];
+
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+
+    const selected = isSameDate(d, selectedDate);
+    const weekend = d.getDay() === 0 || d.getDay() === 6;
+
+    out.push(`
+      <div class="week-day ${selected ? 'selected ' : ''}${isToday(d) ? 'today ' : ''}${weekend ? 'weekend' : ''}"
+           onclick="selectDate(${d.getTime()})">
+        <span class="week-day-name">${weekdays[i]}</span>
+        <span class="week-day-number">${d.getDate()}</span>
+      </div>
+    `);
+  }
+
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+
+  weekTitle.textContent =
+    `${start.toLocaleDateString('en-US',{month:'short',day:'numeric'})} – ` +
+    `${end.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}`;
+
+  weekDays.innerHTML = out.join('');
+  renderDayCount();
+}
+
+function renderMonth() {
+  const y = viewDate.getFullYear();
+  const m = viewDate.getMonth();
+
+  monthTitle.textContent = `${monthNames[m]} ${y}`;
+
+  let out = weekdays.map(x => `<div class="dow">${x}</div>`).join('');
+
+  const first = new Date(y, m, 1);
+  const offset = (first.getDay() + 6) % 7;
+  const days = new Date(y, m + 1, 0).getDate();
+
+  for (let i = 0; i < offset; i++) {
+    out += '<div></div>';
+  }
+
+  for (let n = 1; n <= days; n++) {
+    const d = new Date(y, m, n);
+    const selected = isSameDate(d, selectedDate);
+    const weekend = d.getDay() === 0 || d.getDay() === 6;
+
+    out += `
+      <div class="date-cell ${selected ? 'selected ' : ''}${weekend ? 'weekend' : ''}"
+           onclick="selectDate(${d.getTime()})">
+        ${n}
+      </div>
+    `;
+  }
+
+  monthCalendar.innerHTML = out;
+  renderDayCount();
+}
+
+function renderDayCount() {
+  const y = selectedDate.getFullYear();
+  const start = new Date(y, 0, 1);
+  const end = new Date(y + 1, 0, 1);
+
+  const dayOfYear =
+    Math.floor((selectedDate - start) / 86400000) + 1;
+
+  const total = Math.round((end - start) / 86400000);
+
+  dayProgress.textContent = `Day ${dayOfYear} of ${total}`;
+  daysRemaining.textContent = `${total - dayOfYear} days remaining`;
+}
+
+function renderAll() {
+  renderDay();
+  renderWeek();
+  renderMonth();
+}
+
+function showView(view) {
+  activeView = view;
+
+  // Every time the user opens Week or Month, start from Today.
+  if (view === 'week' || view === 'month') {
+    selectedDate = new Date();
+    viewDate = new Date();
+  }
+
+  document.querySelectorAll('.calendar-view')
+    .forEach(x => x.classList.remove('active'));
+
+  document.getElementById(view + 'View').classList.add('active');
+
+  document.querySelectorAll('.format span')
+    .forEach(x => x.classList.remove('active'));
+
+  document.getElementById(view + 'Tab').classList.add('active');
+
+  renderAll();
+}
+
+function navigate(dir) {
+  if (activeView === 'day') {
+    selectedDate.setDate(selectedDate.getDate() + dir);
+    viewDate = new Date(selectedDate);
+  } else if (activeView === 'week') {
+    viewDate.setDate(viewDate.getDate() + dir * 7);
+  } else {
+    // Move the displayed month without changing the selected date.
+    // This prevents November 6 (or any other same-number date)
+    // from being incorrectly circled when navigating months.
+    viewDate = new Date(
+      viewDate.getFullYear(),
+      viewDate.getMonth() + dir,
+      1
+    );
+  }
+
+  renderAll();
+}
+
+function selectDate(ts) {
+  selectedDate = new Date(ts);
+  viewDate = new Date(selectedDate);
+  showView('day');
+}
+
+renderAll();
+
+/* Tear-off paper transition */
+(function () {
+  const note = document.querySelector('.note');
+  if (!note) return;
+
+  function playTear() {
+    note.classList.remove('tear-transition');
+    void note.offsetWidth; // restart CSS animation reliably
+    note.classList.add('tear-transition');
+
+    setTimeout(() => {
+      note.classList.remove('tear-transition');
+    }, 700);
+  }
+
+  // Week / Today / Month changes
+  document.querySelectorAll('.format span').forEach(tab => {
+    tab.addEventListener('click', playTear);
+  });
+
+  // << / >> navigation
+  document.querySelectorAll('.note-nav .arrow').forEach(arrow => {
+    arrow.addEventListener('click', playTear);
+  });
+})();
+
+</script>
+</body>
+</html>
